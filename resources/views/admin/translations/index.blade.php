@@ -108,11 +108,20 @@
                 <i class="bi bi-eye text-primary"></i>
                 <span class="fw-bold small">Live Preview</span>
                 <div class="vr"></div>
-                <select id="previewPageSelect" class="form-select form-select-sm" style="width: 140px;">
+                <select id="previewPageSelect" class="form-select form-select-sm" style="width: 160px;">
                     <option value="/">Home Page</option>
                     <option value="/about">About Us</option>
                     <option value="/products">Products</option>
+                    <option value="/businesses">Businesses</option>
+                    <option value="/stores">Stores</option>
+                    <option value="/news">News & Events</option>
+                    <option value="/download">Downloads</option>
+                    <option value="/career">Careers</option>
+                    <option value="/equipment">Equipment</option>
+                    <option value="/foodservice">Food Service</option>
                     <option value="/contact">Contact</option>
+                    <option value="/privacy">Privacy Policy</option>
+                    <option value="/terms">Terms & Conditions</option>
                 </select>
             </div>
             <div class="d-flex align-items-center gap-2">

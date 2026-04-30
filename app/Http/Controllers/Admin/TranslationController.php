@@ -24,6 +24,7 @@ class TranslationController extends Controller
             'home' => 'Home Page',
             'about' => 'About Us',
             'nav' => 'Navigation Menu',
+            'fs' => 'Food Service Page',
             'footbar' => 'Footer',
             'brand' => 'Brand Categories',
             'product' => 'Products Page',
