@@ -1,0 +1,37 @@
+.news-list>li:last-child,
+.news-list>li:last-of-type {
+   display: none;
+}
+
+.nav-pills .nav-link.active,
+.nav-pills .show>.nav-link {
+   background-color: var(--bs-light-bg-subtle) !important;
+}
+
+/* Nonaktifkan efek fixed dan atur padding pada tampilan mobile */
+@media (max-width: 991.98px) {
+   body {
+      padding-top: 0 !important;
+   }
+
+   body>header {
+      position: static !important;
+      transform: none !important;
+      transition: none !important;
+   }
+
+   body>header,
+   body>footer {
+      z-index: 0 !important;
+   }
+
+   body>main {
+      z-index: 1 !important;
+   }
+
+   
+}
+
+@media (min-width: 992px) {
+   #menu-news {max-width: 360px;}
+}
