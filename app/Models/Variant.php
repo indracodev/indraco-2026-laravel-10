@@ -14,7 +14,27 @@ class Variant extends Model
 
     public function getNameAttribute()
     {
-        return $this->variant_name;
+        return app()->getLocale() == 'en' && !empty($this->variant_name_eng) ? $this->variant_name_eng : $this->variant_name;
+    }
+
+    public function getDescAttribute()
+    {
+        return app()->getLocale() == 'en' && !empty($this->description_eng) ? $this->description_eng : $this->description;
+    }
+
+    public function getTasteTranslatedAttribute()
+    {
+        return app()->getLocale() == 'en' && !empty($this->taste_eng) ? $this->taste_eng : $this->taste;
+    }
+
+    public function getRoastTranslatedAttribute()
+    {
+        return app()->getLocale() == 'en' && !empty($this->roast_eng) ? $this->roast_eng : $this->roast;
+    }
+
+    public function getIngredientTranslatedAttribute()
+    {
+        return app()->getLocale() == 'en' && !empty($this->ingredient_eng) ? $this->ingredient_eng : $this->ingredient;
     }
 
     public function setNameAttribute($value)

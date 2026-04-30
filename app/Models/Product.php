@@ -16,7 +16,12 @@ class Product extends Model
 
     public function getNameAttribute()
     {
-        return $this->nama_produk;
+        return app()->getLocale() == 'en' && !empty($this->nama_produk_eng) ? $this->nama_produk_eng : $this->nama_produk;
+    }
+
+    public function getPackingAttribute()
+    {
+        return app()->getLocale() == 'en' && !empty($this->tipe_packing_eng) ? $this->tipe_packing_eng : $this->tipe_packing;
     }
 
     public function setNameAttribute($value)
@@ -51,26 +56,26 @@ class Product extends Model
 
     public function brand()
     {
-        return $this->belongsTo(Brand::class);
+        return $this->belongsTo(Brand::class, 'merek_id');
     }
 
     public function category()
     {
-        return $this->belongsTo(Category::class);
+        return $this->belongsTo(Category::class, 'kategori_id');
     }
 
     public function collection()
     {
-        return $this->belongsTo(Collection::class);
+        return $this->belongsTo(Collection::class, 'collection_id');
     }
 
     public function type()
     {
-        return $this->belongsTo(Type::class);
+        return $this->belongsTo(Type::class, 'type_id');
     }
 
     public function variant()
     {
-        return $this->belongsTo(Variant::class);
+        return $this->belongsTo(Variant::class, 'variant_id');
     }
 }

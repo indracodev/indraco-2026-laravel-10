@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" dir="ltr">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" dir="ltr" @hasSection('html_theme') data-bs-theme="@yield('html_theme')" @endif>
 
 <head>
     <meta charset="UTF-8">

@@ -1,0 +1,62 @@
+﻿Array
+(
+    [0] => id
+    [1] => nama_merek
+    [2] => slug
+    [3] => logo_path
+    [4] => deskripsi
+    [5] => deskripsi_eng
+    [6] => status
+    [7] => created_at
+    [8] => updated_at
+)
+Array
+(
+    [0] => id
+    [1] => type_id
+    [2] => variant_name
+    [3] => slug
+    [4] => description
+    [5] => taste
+    [6] => acidity
+    [7] => body
+    [8] => roast
+    [9] => ingredient
+    [10] => map_image
+    [11] => map_opacity
+    [12] => icon_path
+    [13] => bg_color
+    [14] => text_color
+    [15] => status
+    [16] => sort_order
+    [17] => created_at
+)
+Array
+(
+    [0] => id
+    [1] => merek_id
+    [2] => kategori_id
+    [3] => collection_id
+    [4] => type_id
+    [5] => variant_id
+    [6] => nama_produk
+    [7] => slug
+    [8] => sku
+    [9] => deskripsi_singkat
+    [10] => deskripsi_lengkap
+    [11] => tipe_packing
+    [12] => inner_kemasan
+    [13] => harga_reguler
+    [14] => gambar_utama
+    [15] => gambar_gallery_json
+    [16] => is_unggulan
+    [17] => link_shopee
+    [18] => link_web
+    [19] => link_tokopedia
+    [20] => link_lazada
+    [21] => link_tiktok
+    [22] => status
+    [23] => is_deleted
+    [24] => created_at
+    [25] => updated_at
+)

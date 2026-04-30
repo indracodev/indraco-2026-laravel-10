@@ -14,15 +14,11 @@
                         <span>Hasil Pencarian</span>: <br> <b class="fw-bold">"{{ $search_query }}"</b>
                     </h2>
                 @else
-                    @php
-                        $merek_slug = str_replace('consumer-', '', $brand->slug);
-                        $logo_img = "images/logo-{$merek_slug}.png";
-                    @endphp
-                    <img src="{{ asset($logo_img) }}" alt="" loading="lazy" aria-hidden="true" class="theme-image w-75 mx-auto order-lg-2 me-lg-0" style="max-width: 280px;" onerror="this.src='{{ asset('images/logo-tugu-buaya.png') }}'">
+                    <img src="{{ asset($brand->logo_path) }}" alt="{{ $brand->name }}" loading="lazy" class="theme-image w-75 mx-auto order-lg-2 me-lg-0" style="max-width: 280px;">
                     <h2 class="display-4 text-capitalize fw-thin order-lg-1 text-center text-lg-start">
-                        <span>produk</span> <br>
+                        <span data-i18n="nav_product">{{ __('nav_product') }}</span> <br>
                         <b class="fw-bold">
-                            {!! str_replace('Kopi ', 'kopi <br> <b class="fw-bold">', $brand->nama_merek) !!}</b>
+                            {!! $brand->name !!}</b>
                     </h2>
                 @endif
             </header>
@@ -53,7 +49,7 @@
                     </li>
                 @empty
                     <div class="col-12 text-center py-5">
-                        <p class="text-muted">{{ $is_search ?? false ? 'Produk tidak ditemukan.' : 'Produk belum tersedia untuk kategori ini.' }}</p>
+                        <p class="text-muted" data-i18n="{{ $is_search ?? false ? 'search_not_found' : 'brand_empty_desc' }}">{{ $is_search ?? false ? __('search_not_found') : __('brand_empty_desc') }}</p>
                     </div>
                 @endforelse
             </ol>

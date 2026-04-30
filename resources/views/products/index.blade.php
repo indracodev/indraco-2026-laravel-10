@@ -43,15 +43,41 @@
 
     <section class="py-5 text-center" aria-labelledby="brands">
         <div class="container py-lg-5">
-            <h2 id="brands" class="fs-3 fw-bold text-capitalize mb-5">{{ __('product_brands_title') }}</h2>
+            <h2 id="brands" class="fs-3 fw-bold text-capitalize mb-5" data-i18n="product_brands_title">{{ __('product_brands_title') }}</h2>
 
             <div class="daftar-kategori-produk text-start text-capitalize row row-cols-1 row-gap-5">
+                <!-- Coffee Category -->
+                @if($brands['coffee']->count() > 0)
                 <div class="col">
-                    <h3 class="fs-4 fw-bold mb-4">{{ __('coffee') }}</h3>
+                    <h3 class="fs-4 fw-bold mb-4" data-i18n="coffee">{{ __('coffee') }}</h3>
                     <div class="row row-cols-1 row-cols-sm-2 row-cols-xl-3 g-3 g-sm-4 g-md-5">
-                        @foreach($brands->where('category_id', 1) as $brand)
+                        @foreach($brands['coffee'] as $brand)
                         <div class="col">
                             <a href="{{ route($brand->slug == 'supresso' ? 'product.supresso' : 'product.indraco', $brand->slug) }}" class="text-reset text-decoration-none opacity-100">
+                                <article class="ratio ratio-16x9 card bg-light-subtle p-4 rounded-4 border-0">
+                                    <img src="{{ asset($brand->logo_path) }}" class="theme-image object-fit-contain w-50 h-50 top-50 start-50 translate-middle" alt="{{ $brand->name }}" loading="lazy">
+                                </article>
+                            </a>
+                        </div>
+                        @endforeach
+                    </div>
+                </div>
+                @endif
+
+                <!-- Ginger, Coconut Milk, Cocoa Categories -->
+                <div class="col">
+                    <h3 class="fs-4 fw-bold mb-4">
+                        <span data-i18n="ginger">{{ __('ginger') }}</span> | 
+                        <span data-i18n="choconutmilk">{{ __('choconutmilk') }}</span> | 
+                        <span data-i18n="chocolate">{{ __('chocolate') }}</span>
+                    </h3>
+                    <div class="row row-cols-1 row-cols-sm-2 row-cols-xl-3 g-3 g-sm-4 g-md-5">
+                        @php
+                            $others = $brands['ginger']->concat($brands['coconut_milk'])->concat($brands['cocoa']);
+                        @endphp
+                        @foreach($others as $brand)
+                        <div class="col">
+                            <a href="{{ route('product.indraco', $brand->slug) }}" class="text-reset text-decoration-none opacity-100">
                                 <article class="ratio ratio-16x9 card bg-light-subtle p-4 rounded-4 border-0">
                                     <img src="{{ asset($brand->logo_path) }}" class="theme-image object-fit-contain w-50 h-50 top-50 start-50 translate-middle" alt="{{ $brand->name }}" loading="lazy">
                                 </article>
@@ -66,7 +92,7 @@
 
     <section class="py-5 text-bg-primary text-center" aria-labelledby="marketplace">
         <div class="container py-lg-5">
-            <h2 id="marketplace" class="fs-3 fw-bold text-capitalize mb-5">{{ __('product_order_title') }}</h2>
+            <h2 id="marketplace" class="fs-3 fw-bold text-capitalize mb-5" data-i18n="product_order_title">{{ __('product_order_title') }}</h2>
             <div class="mb-5">
                 <p class="small">Website INDRACO Store</p>
                 <a href="https://indracostore.com/" target="_blank" class="text-reset text-decoration-none">
@@ -74,7 +100,7 @@
                 </a>
             </div>
             <div>
-                <p class="small">{{ __('product_available_at') }} :</p>
+                <p class="small" data-i18n="product_available_at">{{ __('product_available_at') }} :</p>
                 <nav aria-label="online store" class="d-flex flex-wrap justify-content-center align-items-center" style="gap: 3rem 5rem;">
                     <a href="https://www.tokopedia.com/indracoofficial" target="_blank" class="text-reset text-decoration-none">
                         <img src="{{ asset('images/logo-tokopedia.png') }}" alt="Logo Tokopedia" loading="lazy" class="w-100 h-auto" style="max-width: 10rem;">

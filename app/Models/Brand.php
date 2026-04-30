@@ -14,12 +14,12 @@ class Brand extends Model
 
     public function getNameAttribute()
     {
-        return $this->nama_merek;
+        return app()->getLocale() == 'en' && !empty($this->nama_merek_eng) ? $this->nama_merek_eng : $this->nama_merek;
     }
 
-    public function setNameAttribute($value)
+    public function getDescAttribute()
     {
-        $this->attributes['nama_merek'] = $value;
+        return app()->getLocale() == 'en' && !empty($this->deskripsi_eng) ? $this->deskripsi_eng : $this->deskripsi;
     }
 
     public function products()
