@@ -55,6 +55,37 @@
     
     @yield('scripts')
 
+    {{-- Geolocation Detection --}}
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            if (!localStorage.getItem('lang_detected')) {
+                fetch('https://ipapi.co/json/')
+                    .then(response => response.json())
+                    .then(data => {
+                        console.log("%c[Geolocation]%c Access from: " + (data.city || 'Unknown City') + ", " + (data.country_name || 'Unknown Country') + " (" + data.country_code + ")", "color: #0d6efd; font-weight: bold", "color: inherit");
+                        
+                        let targetLocale = (data.country_code === 'ID') ? 'id' : 'en';
+                        let currentLocale = "{{ app()->getLocale() }}";
+                        
+                        if (targetLocale !== currentLocale) {
+                            console.log("%c[Localization]%c Auto-switching language to: " + targetLocale, "color: #198754; font-weight: bold", "color: inherit");
+                            localStorage.setItem('lang_detected', 'true');
+                            window.location.href = "{{ url('/lang') }}/" + targetLocale;
+                        } else {
+                            localStorage.setItem('lang_detected', 'true');
+                            console.log("%c[Localization]%c Language already matches region: " + targetLocale, "color: #198754; font-weight: bold", "color: inherit");
+                        }
+                    })
+                    .catch(error => {
+                        console.warn('[Geolocation] Failed to detect location:', error);
+                        localStorage.setItem('lang_detected', 'true');
+                    });
+            } else {
+                 console.log("%c[Localization]%c Regional detection active. Current locale: {{ app()->getLocale() }}", "color: #6c757d; font-weight: bold", "color: inherit");
+            }
+        });
+    </script>
+
     @if(request()->has('preview'))
     <style>
         [data-i18n] {
