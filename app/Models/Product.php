@@ -4,9 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Traits\HasLogAktivitas;
 
 class Product extends Model
 {
+    use HasLogAktivitas;
     use HasFactory;
 
     protected $table = 'master_produk';

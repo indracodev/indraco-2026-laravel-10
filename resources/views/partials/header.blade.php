@@ -35,8 +35,8 @@
                    </svg>
                 </button>
              </div>
-             <ul class="list-unstyled mb-0 d-none d-lg-flex flex-wrap gap-3 ms-auto small">
-                <li><a href="https://indracostore.com/" target="_blank" class="text-reset text-decoration-none opacity-75-hover text-capitalize">INDRACO Store</a></li>
+             <ul class="list-unstyled mb-0 d-none d-lg-flex flex-wrap gap-3 ms-auto small align-items-center">
+                <li><a href="https://indracostore.com/" target="_blank" class="text-reset text-decoration-none opacity-75-hover">INDRACO Store</a></li>
                 <li class="vr"></li>
                 <li><a href="{{ route('lang.switch', 'en') }}" class="text-reset text-decoration-none lang-toggler {{ app()->getLocale() == 'en' ? '' : 'opacity-50' }}">&#x1f1fa;&#x1f1f8; <span class="opacity-75-hover {{ app()->getLocale() == 'en' ? 'fw-bold' : '' }}">English</span></a></li>
                 <li class="vr"></li>
@@ -45,13 +45,13 @@
           </div>
           <div class="navbar-bawah w-100 d-none d-lg-flex align-items-lg-center column-gap-lg-5">
              <ul aria-label="navigasi desktop" class="list-unstyled mb-0 d-flex flex-wrap gap-3 flex-lg-grow-1">
-                <li><a href="{{ route('about') }}" class="text-reset text-decoration-none opacity-75-hover text-capitalize {{ request()->routeIs('about') ? 'fw-bold text-primary' : '' }}">{{ __('nav_about') }}</a></li>
+                <li><a href="{{ route('about') }}" class="text-reset text-decoration-none opacity-75-hover {{ request()->routeIs('about') ? 'fw-bold text-primary' : '' }}" data-i18n="nav_about">{{ __('nav_about') }}</a></li>
                 <li class="vr"></li>
                 <li class="dropdown">
-                    <a href="{{ route('products') }}" class="text-reset text-decoration-none opacity-75-hover dropdown-link text-capitalize {{ request()->routeIs('products*') ? 'fw-bold text-primary' : '' }}">{{ __('nav_product') }}</a>
+                    <a href="{{ route('products') }}" class="text-reset text-decoration-none opacity-75-hover dropdown-link {{ request()->routeIs('products*') ? 'fw-bold text-primary' : '' }}" data-i18n="nav_product">{{ __('nav_product') }}</a>
                     <div class="dropdown-menu rounded-0 border-0 bg-light-subtle position-fixed start-0 end-0 py-4">
                         <div class="container-lg pb-3">
-                            <h2 class="fw-bold fs-4">{{ __('product_brands_title') }}</h2>
+                            <h2 class="fw-bold fs-4" data-i18n="product_brands_title">{{ __('product_brands_title') }}</h2>
                             <hr class="opacity-75 border-2">
                             <div class="d-flex column-gap-4">
                                 @php
@@ -88,7 +88,7 @@
                                     <div class="nav flex-column nav-pills" role="tablist">
                                         @foreach($main_categories as $index => $cat)
                                             @php $lk = $labelKeyMap[$cat->slug] ?? ('nav_' . str_replace('-','_',$cat->slug)); @endphp
-                                            <button type="button" class="nav-link text-reset text-start px-0 text-capitalize bg-transparent rounded-0 opacity-75-hover {{ $index === 0 ? 'active' : '' }}" id="tab-link-{{ $cat->slug }}" data-bs-toggle="pill" data-bs-target="#tab-pane-{{ $cat->slug }}" role="tab" aria-selected="{{ $index === 0 ? 'true' : 'false' }}">{{ __($lk) }}</button>
+                                            <button type="button" class="nav-link text-reset text-start px-0 bg-transparent rounded-0 opacity-75-hover {{ $index === 0 ? 'active' : '' }}" id="tab-link-{{ $cat->slug }}" data-bs-toggle="pill" data-bs-target="#tab-pane-{{ $cat->slug }}" role="tab" aria-selected="{{ $index === 0 ? 'true' : 'false' }}" data-i18n="{{ $lk }}">{{ __($lk) }}</button>
                                         @endforeach
                                     </div>
                                     <div class="vr"></div>
@@ -107,9 +107,9 @@
                                                                 $ms = str_replace('consumer-', '', $sub->slug);
                                                                 $href = str_contains($sub->slug,'supresso') ? route('product.supresso',$ms) : route('product.indraco',$ms);
                                                             @endphp
-                                                            <a href="{{ $href }}" class="nav-link text-reset text-start px-0 bg-transparent rounded-0 opacity-75-hover {{ $subIndex === 0 ? 'active' : '' }}" id="tab-link-{{ $sub->slug }}" data-bs-toggle="pill" data-bs-target="#tab-pane-{{ $sub->slug }}">{{ __($lk) }}</a>
+                                                            <a href="{{ $href }}" class="nav-link text-reset text-start px-0 bg-transparent rounded-0 opacity-75-hover {{ $subIndex === 0 ? 'active' : '' }}" id="tab-link-{{ $sub->slug }}" data-bs-toggle="pill" data-bs-target="#tab-pane-{{ $sub->slug }}" data-i18n="{{ $lk }}">{{ __($lk) }}</a>
                                                         @else
-                                                            <button type="button" class="nav-link text-reset text-start px-0 text-capitalize bg-transparent rounded-0 opacity-75-hover {{ $subIndex === 0 ? 'active' : '' }}" id="tab-link-{{ $sub->slug }}" data-bs-toggle="pill" data-bs-target="#tab-pane-{{ $sub->slug }}" role="tab" aria-selected="{{ $subIndex === 0 ? 'true' : 'false' }}">{{ __($lk) }}</button>
+                                                            <button type="button" class="nav-link text-reset text-start px-0 bg-transparent rounded-0 opacity-75-hover {{ $subIndex === 0 ? 'active' : '' }}" id="tab-link-{{ $sub->slug }}" data-bs-toggle="pill" data-bs-target="#tab-pane-{{ $sub->slug }}" role="tab" aria-selected="{{ $subIndex === 0 ? 'true' : 'false' }}" data-i18n="{{ $lk }}">{{ __($lk) }}</button>
                                                         @endif
                                                     @endforeach
                                                 </div>
@@ -127,8 +127,8 @@
                                                                 @php
                                                                     $tk = ['brochoco'=>'chocolate','jaheku'=>'ginger','intirasa'=>'choconutmilk','hao-cafe'=>'creamer&sugar'][$ms] ?? 'coffee';
                                                                 @endphp
-                                                                <h3 class="mb-3"><span class="fw-bold">{{ __($lk) }}</span><span class="fw-thin text-capitalize"> | {{ __($tk) }}</span></h3>
-                                                                <p class="mb-4">{{ __($dk) }}</p>
+                                                                <h3 class="mb-3"><span class="fw-bold" data-i18n="{{ $lk }}">{{ __($lk) }}</span> <span class="fw-thin"> | <span data-i18n="{{ $tk }}">{{ __($tk) }}</span></span></h3>
+                                                                <p class="mb-4" data-i18n="{{ $dk }}">{{ __($dk) }}</p>
                                                                 <div class="d-flex gap-3 w-100 align-items-end mt-auto">
                                                                     @for($i=1;$i<=3;$i++)
                                                                     <figure class="figure flex-grow-1 m-0">
@@ -139,8 +139,8 @@
                                                                     @endfor
                                                                 </div>
                                                             @else
-                                                                <h3 class="mb-3 fw-bold">{{ __($lk) }}</h3>
-                                                                <p class="mb-4">{{ __($dk) }}</p>
+                                                                <h3 class="mb-3 fw-bold" data-i18n="{{ $lk }}">{{ __($lk) }}</h3>
+                                                                <p class="mb-4" data-i18n="{{ $dk }}">{{ __($dk) }}</p>
                                                             @endif
                                                         </div>
                                                     </div>
@@ -157,26 +157,26 @@
                     </div>
                 </li>
                 <li class="vr"></li>
-                <li><a href="{{ route('businesses') }}" class="text-reset text-decoration-none opacity-75-hover text-capitalize {{ request()->routeIs('businesses') ? 'fw-bold text-primary' : '' }}">{{ __('nav_business') }}</a></li>
+                <li><a href="{{ route('businesses') }}" class="text-reset text-decoration-none opacity-75-hover {{ request()->routeIs('businesses') ? 'fw-bold text-primary' : '' }}" data-i18n="nav_business">{{ __('nav_business') }}</a></li>
                 <li class="vr"></li>
                 <li class="dropdown">
-                  <a href="{{ route('stores') }}" class="text-reset text-decoration-none opacity-75-hover dropdown-link text-capitalize {{ request()->routeIs('stores') ? 'fw-bold text-primary' : '' }}">{{ __('nav_stores') }}</a>
+                  <a href="{{ route('stores') }}" class="text-reset text-decoration-none opacity-75-hover dropdown-link {{ request()->routeIs('stores') ? 'fw-bold text-primary' : '' }}" data-i18n="nav_stores">{{ __('nav_stores') }}</a>
                   <div class="dropdown-menu rounded-0 border-0 bg-light-subtle position-fixed start-0 end-0 py-4">
                      <div class="container-lg pb-3">
-                        <h2 class="fw-bold text-capitalize fs-4">{{ __('nav_stores_official') }}</h2>
+                        <h2 class="fw-bold fs-4" data-i18n="nav_stores_official">{{ __('nav_stores_official') }}</h2>
                         <hr class="opacity-75 border-2">
                         <div class="d-flex column-gap-4">
                            <div class="nav flex-column nav-pills" role="tablist">
-                              <button type="button" class="nav-link text-reset text-start px-0 text-capitalize bg-transparent rounded-0 opacity-75-hover active" id="tab-link-store-ecommerce" data-bs-toggle="pill" data-bs-target="#tab-pane-store-ecommerce" aria-selected="true">{{ __('nav_official') }}</button>
-                              <button type="button" class="nav-link text-reset text-start px-0 text-capitalize bg-transparent rounded-0 opacity-75-hover" id="tab-link-store-marketplace" data-bs-toggle="pill" data-bs-target="#tab-pane-store-marketplace" aria-selected="false">{{ __('nav_marketplace') }}</button>
+                              <button type="button" class="nav-link text-reset text-start px-0 bg-transparent rounded-0 opacity-75-hover active" id="tab-link-store-ecommerce" data-bs-toggle="pill" data-bs-target="#tab-pane-store-ecommerce" aria-selected="true" data-i18n="nav_official">{{ __('nav_official') }}</button>
+                              <button type="button" class="nav-link text-reset text-start px-0 bg-transparent rounded-0 opacity-75-hover" id="tab-link-store-marketplace" data-bs-toggle="pill" data-bs-target="#tab-pane-store-marketplace" aria-selected="false" data-i18n="nav_marketplace">{{ __('nav_marketplace') }}</button>
                            </div>
                            <div class="vr"></div>
                            <div class="tab-content">
                               <div class="tab-pane fade show active" id="tab-pane-store-ecommerce" role="tabpanel" tabindex="0">
                                  <div class="d-flex column-gap-4">
                                     <div class="nav flex-column nav-pills" role="tablist">
-                                       <button type="button" onclick="window.open('https://supresso.com/', '_blank')" class="nav-link text-reset text-start px-0 text-capitalize bg-transparent rounded-0 opacity-75-hover active" id="tab-link-store-ecommerce-supresso" data-bs-toggle="pill" data-bs-target="#tab-pane-store-ecommerce-supresso" aria-selected="true">supresso</button>
-                                       <button type="button" onclick="window.open('https://indracostore.com/', '_blank')" class="nav-link text-reset text-start px-0 text-capitalize bg-transparent rounded-0 opacity-75-hover" id="tab-link-store-ecommerce-indracostore" data-bs-toggle="pill" data-bs-target="#tab-pane-store-ecommerce-indracostore" aria-selected="false">INDRACO store</button>
+                                       <button type="button" onclick="window.open('https://supresso.com/', '_blank')" class="nav-link text-reset text-start px-0 bg-transparent rounded-0 opacity-75-hover active" id="tab-link-store-ecommerce-supresso" data-bs-toggle="pill" data-bs-target="#tab-pane-store-ecommerce-supresso" aria-selected="true">supresso</button>
+                                       <button type="button" onclick="window.open('https://indracostore.com/', '_blank')" class="nav-link text-reset text-start px-0 bg-transparent rounded-0 opacity-75-hover" id="tab-link-store-ecommerce-indracostore" data-bs-toggle="pill" data-bs-target="#tab-pane-store-ecommerce-indracostore" aria-selected="false">INDRACO store</button>
                                     </div>
                                     <div class="vr"></div>
                                     <div class="tab-content">
@@ -192,11 +192,11 @@
                               <div class="tab-pane fade" id="tab-pane-store-marketplace" role="tabpanel" tabindex="0">
                                  <div class="d-flex column-gap-4">
                                     <div class="nav flex-column nav-pills" role="tablist">
-                                       <button type="button" onclick="window.open('https://www.indraco.com/mplink/redirect.php?linkclick=tokopedia', '_blank')" class="nav-link text-reset text-start px-0 text-capitalize bg-transparent rounded-0 opacity-75-hover active" id="tab-link-store-marketplace-tokopedia" data-bs-toggle="pill" data-bs-target="#tab-pane-store-marketplace-tokopedia" aria-selected="true">tokopedia</button>
-                                       <button type="button" onclick="window.open('https://www.indraco.com/mplink/redirect.php?linkclick=shopee', '_blank')" class="nav-link text-reset text-start px-0 text-capitalize bg-transparent rounded-0 opacity-75-hover" id="tab-link-store-marketplace-shopee" data-bs-toggle="pill" data-bs-target="#tab-pane-store-marketplace-shopee" aria-selected="false">shopee</button>
-                                       <button type="button" onclick="window.open('https://www.indraco.com/mplink/redirect.php?linkclick=lazada', '_blank')" class="nav-link text-reset text-start px-0 text-capitalize bg-transparent rounded-0 opacity-75-hover" id="tab-link-store-marketplace-lazada" data-bs-toggle="pill" data-bs-target="#tab-pane-store-marketplace-lazada" aria-selected="false">lazada</button>
-                                       <button type="button" onclick="window.open('https://www.indraco.com/mplink/redirect.php?linkclick=blibli', '_blank')" class="nav-link text-reset text-start px-0 text-capitalize bg-transparent rounded-0 opacity-75-hover" id="tab-link-store-marketplace-blibli" data-bs-toggle="pill" data-bs-target="#tab-pane-store-marketplace-blibli" aria-selected="false">blibli</button>
-                                       <button type="button" onclick="window.open('https://www.tiktok.com/@indracostore', '_blank')" class="nav-link text-reset text-start px-0 text-capitalize bg-transparent rounded-0 opacity-75-hover" id="tab-link-store-marketplace-tiktokshop" data-bs-toggle="pill" data-bs-target="#tab-pane-store-marketplace-tiktokshop" aria-selected="false">tikTok shop</button>
+                                       <button type="button" onclick="window.open('https://www.indraco.com/mplink/redirect.php?linkclick=tokopedia', '_blank')" class="nav-link text-reset text-start px-0 bg-transparent rounded-0 opacity-75-hover active" id="tab-link-store-marketplace-tokopedia" data-bs-toggle="pill" data-bs-target="#tab-pane-store-marketplace-tokopedia" aria-selected="true">tokopedia</button>
+                                       <button type="button" onclick="window.open('https://www.indraco.com/mplink/redirect.php?linkclick=shopee', '_blank')" class="nav-link text-reset text-start px-0 bg-transparent rounded-0 opacity-75-hover" id="tab-link-store-marketplace-shopee" data-bs-toggle="pill" data-bs-target="#tab-pane-store-marketplace-shopee" aria-selected="false">shopee</button>
+                                       <button type="button" onclick="window.open('https://www.indraco.com/mplink/redirect.php?linkclick=lazada', '_blank')" class="nav-link text-reset text-start px-0 bg-transparent rounded-0 opacity-75-hover" id="tab-link-store-marketplace-lazada" data-bs-toggle="pill" data-bs-target="#tab-pane-store-marketplace-lazada" aria-selected="false">lazada</button>
+                                       <button type="button" onclick="window.open('https://www.indraco.com/mplink/redirect.php?linkclick=blibli', '_blank')" class="nav-link text-reset text-start px-0 bg-transparent rounded-0 opacity-75-hover" id="tab-link-store-marketplace-blibli" data-bs-toggle="pill" data-bs-target="#tab-pane-store-marketplace-blibli" aria-selected="false">blibli</button>
+                                       <button type="button" onclick="window.open('https://www.tiktok.com/@indracostore', '_blank')" class="nav-link text-reset text-start px-0 bg-transparent rounded-0 opacity-75-hover" id="tab-link-store-marketplace-tiktokshop" data-bs-toggle="pill" data-bs-target="#tab-pane-store-marketplace-tiktokshop" aria-selected="false">tikTok shop</button>
                                     </div>
                                     <div class="vr"></div>
                                     <div class="tab-content">
@@ -230,13 +230,13 @@
                 </li>
 
                <li class="vr"></li>
-               <li><a href="{{ route('news') }}" class="text-reset text-decoration-none opacity-75-hover text-capitalize {{ request()->routeIs('news*') ? 'fw-bold text-primary' : '' }}">{{ __('nav_news') }}</a></li>
+               <li><a href="{{ route('news') }}" class="text-reset text-decoration-none opacity-75-hover {{ request()->routeIs('news*') ? 'fw-bold text-primary' : '' }}" data-i18n="nav_news">{{ __('nav_news') }}</a></li>
                <li class="vr"></li>
-               <li><a href="{{ route('download') }}" class="text-reset text-decoration-none opacity-75-hover text-capitalize {{ request()->routeIs('download') ? 'fw-bold text-primary' : '' }}">{{ __('nav_download') }}</a></li>
+               <li><a href="{{ route('download') }}" class="text-reset text-decoration-none opacity-75-hover {{ request()->routeIs('download') ? 'fw-bold text-primary' : '' }}" data-i18n="nav_download">{{ __('nav_download') }}</a></li>
                <li class="vr"></li>
-               <li><a href="{{ route('career') }}" class="text-reset text-decoration-none opacity-75-hover text-capitalize {{ request()->routeIs('career') ? 'fw-bold text-primary' : '' }}">{{ __('nav_career') }}</a></li>
+               <li><a href="{{ route('career') }}" class="text-reset text-decoration-none opacity-75-hover {{ request()->routeIs('career') ? 'fw-bold text-primary' : '' }}" data-i18n="nav_career">{{ __('nav_career') }}</a></li>
                <li class="vr"></li>
-               <li><a href="{{ route('contact') }}" class="text-reset text-decoration-none opacity-75-hover text-capitalize {{ request()->routeIs('contact') ? 'fw-bold text-primary' : '' }}">{{ __('nav_contact') }}</a></li>
+               <li><a href="{{ route('contact') }}" class="text-reset text-decoration-none opacity-75-hover {{ request()->routeIs('contact') ? 'fw-bold text-primary' : '' }}" data-i18n="nav_contact">{{ __('nav_contact') }}</a></li>
              </ul>
              <div class="d-flex column-gap-4">
                 <button type="button" class="btn p-0 rounded-0 border-0" data-bs-toggle="modal" data-bs-target="#modal-search">

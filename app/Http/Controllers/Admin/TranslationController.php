@@ -53,6 +53,11 @@ class TranslationController extends Controller
             // Determine group
             $prefix = explode('_', $key)[0];
             $groupKey = array_key_exists($prefix, $groupLabels) ? $prefix : 'general';
+
+            // Special mapping for navigation sub-keys
+            if ($prefix === 'naveq' || $prefix === 'navdesc') {
+                $groupKey = 'nav';
+            }
             
             $groupedTranslations[$groupKey][$key] = [
                 'id' => $idData[$key] ?? '',

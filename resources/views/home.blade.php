@@ -10,7 +10,7 @@
                 <iframe class="position-absolute top-50 start-50 translate-middle w-100 h-100"
                     src="https://www.youtube.com/embed/ePqLLciPHKg?autoplay=1&amp;mute=1&amp;loop=1&amp;playlist=ePqLLciPHKg&amp;controls=0&amp;modestbranding=1&amp;rel=0&amp;playsinline=1"
                     loading="eager" aria-hidden="true" tabindex="-1" title="Video profil INDRACO" frameborder="0"
-                    allow="autoplay; fullscreen" allowfullscreen=""></iframe>
+                    allow="autoplay; fullscreen; compute-pressure"></iframe>
             </div>
         </div>
         <div class="z-1 video-overlay position-absolute bg-black opacity-50"
