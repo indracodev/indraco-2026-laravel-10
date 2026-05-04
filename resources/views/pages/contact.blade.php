@@ -2,6 +2,10 @@
 
 @section('title', __('contact_title_page'))
 
+@section('styles')
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+@endsection
+
 @section('content')
 <main id="konten">
     <div class="py-5">
@@ -69,14 +73,11 @@
                             class="form-control form-control-lg rounded-0 text-reset bg-transparent border-0 px-0 shadow-none"
                             placeholder="{{ __('contact_placeholder_message') }}" required>{{ old('message') }}</textarea>
                     </div>
-                    <div class="form-group d-flex align-items-center column-gap-3 border-bottom w-50">
-                        <label for="captcha" class="text-nowrap fw-bold">
-                            {{ __('contact_verification') }}
-                            {{ $num1 }} + {{ $num2 }} =
-                        </label>
-                        <input id="captcha" name="captcha" type="number"
-                            class="form-control form-control-lg rounded-0 text-reset bg-transparent border-0 px-0 shadow-none text-center"
-                            placeholder="?" required>
+                    <div class="form-group">
+                        <div class="g-recaptcha" data-sitekey="{{ config('recaptcha.site_key') }}"></div>
+                        @error('g-recaptcha-response')
+                            <div class="text-danger small mt-1">{{ $message }}</div>
+                        @enderror
                     </div>
                     <div class="form-group">
                         <button type="submit" class="btn btn-outline-invert float-end px-4 px-xl-5">
