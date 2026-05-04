@@ -33,8 +33,8 @@
                     <ul class="list-unstyled mb-0">
                         @foreach($news as $other)
                         <li>
-                            <a href="{{ route('news.show', $other->slug) }}" class="text-reset text-decoration-none opacity-75-hover text-start {{ $item->id == $other->id ? 'fw-bold text-primary' : '' }}">
-                                <h3 class="fs-5 text-capitalize text-2-line">
+                            <a href="{{ route('news.show', $other->slug) }}" class="text-reset text-decoration-none opacity-75-hover text-start">
+                                <h3 class="fs-5 text-capitalize text-2-line {{ $item->id == $other->id ? 'fw-bold text-primary' : '' }}">
                                     {{ $other->translated_title }}
                                 </h3>
                                 <p class="small">

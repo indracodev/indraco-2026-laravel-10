@@ -41,8 +41,8 @@
                     <ul class="list-unstyled mb-0">
                         @foreach($news as $item)
                         <li>
-                            <a href="{{ route('news.show', $item->slug) }}" class="text-reset text-decoration-none opacity-75-hover text-start {{ isset($current) && $current->id == $item->id ? 'fw-bold' : '' }}">
-                                <h3 class="fs-5 text-capitalize text-2-line">
+                            <a href="{{ route('news.show', $item->slug) }}" class="text-reset text-decoration-none opacity-75-hover text-start">
+                                <h3 class="fs-5 text-capitalize text-2-line {{ isset($current) && $current->id == $item->id ? 'fw-bold text-primary' : '' }}">
                                     {{ $item->translated_title }}
                                 </h3>
                                 <p class="small">
