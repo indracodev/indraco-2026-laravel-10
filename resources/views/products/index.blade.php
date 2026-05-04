@@ -20,9 +20,9 @@
                     <div class="carousel-caption position-static d-lg-flex align-items-lg-center column-gap-lg-5 justify-content-lg-around">
                         <img src="{{ asset($banner->image_path) }}" alt="" loading="lazy" aria-hidden="true" class="carousel-img w-100 h-auto order-lg-2">
                         <div class="caption-text text-start order-lg-1">
-                            <h2 class="fw-bold fs-1 text-capitalize">{{ app()->getLocale() == 'en' ? $banner->title_en : $banner->title_id }}</h2>
+                            <h2 class="fw-bold fs-1 text-capitalize">{!! app()->getLocale() == 'en' ? $banner->title_en : $banner->title_id !!}</h2>
                             <hr>
-                            <p class="fs-4 fw-bold mb-4">{{ app()->getLocale() == 'en' ? $banner->subtitle_en : $banner->subtitle_id }}</p>
+                            <p class="fs-4 fw-bold mb-4">{!! app()->getLocale() == 'en' ? $banner->subtitle_en : $banner->subtitle_id !!}</p>
                             <a href="{{ $banner->link }}" target="_blank" class="btn btn-outline-invert text-capitalize">{{ app()->getLocale() == 'en' ? $banner->button_text_en : $banner->button_text_id }}</a>
                         </div>
                     </div>

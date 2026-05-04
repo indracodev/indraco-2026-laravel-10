@@ -69,19 +69,19 @@
                                     <div class="modal-body text-start">
                                         <div class="mb-3">
                                             <label class="form-label">Judul (ID)</label>
-                                            <input type="text" name="title_id" class="form-control" value="{{ $banner->title_id }}" required>
+                                            <textarea name="title_id" class="form-control summernote" required>{{ $banner->title_id }}</textarea>
                                         </div>
                                         <div class="mb-3">
                                             <label class="form-label">Subjudul (ID)</label>
-                                            <input type="text" name="subtitle_id" class="form-control" value="{{ $banner->subtitle_id }}" required>
+                                            <textarea name="subtitle_id" class="form-control summernote" required>{{ $banner->subtitle_id }}</textarea>
                                         </div>
                                         <div class="mb-3">
                                             <label class="form-label">Judul (EN)</label>
-                                            <input type="text" name="title_en" class="form-control" value="{{ $banner->title_en }}" required>
+                                            <textarea name="title_en" class="form-control summernote" required>{{ $banner->title_en }}</textarea>
                                         </div>
                                         <div class="mb-3">
                                             <label class="form-label">Subjudul (EN)</label>
-                                            <input type="text" name="subtitle_en" class="form-control" value="{{ $banner->subtitle_en }}" required>
+                                            <textarea name="subtitle_en" class="form-control summernote" required>{{ $banner->subtitle_en }}</textarea>
                                         </div>
                                         <div class="mb-3">
                                             <label class="form-label">Tautan (Link)</label>
@@ -124,19 +124,19 @@
                 <div class="modal-body">
                     <div class="mb-3">
                         <label class="form-label">Judul (ID)</label>
-                        <input type="text" name="title_id" class="form-control" required>
+                        <textarea name="title_id" class="form-control summernote" required></textarea>
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Subjudul (ID)</label>
-                        <input type="text" name="subtitle_id" class="form-control" required>
+                        <textarea name="subtitle_id" class="form-control summernote" required></textarea>
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Judul (EN)</label>
-                        <input type="text" name="title_en" class="form-control" required>
+                        <textarea name="title_en" class="form-control summernote" required></textarea>
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Subjudul (EN)</label>
-                        <input type="text" name="subtitle_en" class="form-control" required>
+                        <textarea name="subtitle_en" class="form-control summernote" required></textarea>
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Tautan (Link)</label>
@@ -156,3 +156,19 @@
     </div>
 </div>
 @endsection
+
+@push('scripts')
+<script>
+    $(document).ready(function() {
+        $('.summernote').summernote({
+            height: 150,
+            dialogsInBody: true,
+            toolbar: [
+                ['style', ['bold', 'italic', 'underline', 'clear']],
+                ['insert', ['link']],
+                ['view', ['codeview']]
+            ]
+        });
+    });
+</script>
+@endpush
