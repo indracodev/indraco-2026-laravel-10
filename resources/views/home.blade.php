@@ -34,7 +34,7 @@
                 <div class="col col-12 col-md col-xl-7">
                     <h2 class="fs-3 fw-bold mb-4 text-capitalize">PT. Indraco Global Indonesia </h2>
                     <p data-i18n="home_1" class="split-paragraph">
-                        Kami INDRACO &ndash; Dimulai pada tahun 1971 dengan gudang di Sumatera oleh pendiri kami, kami telah terus tumbuh dan berkembang menjadi beberapa fasilitas manufaktur canggih di seluruh Indonesia dan Singapura. Di INDRACO, kami berusaha untuk berinovasi dalam industri yang selalu berubah dan dapat beroperasi dengan kecerdasan dan kreativitas yang dengan bangga kami bawa dan tanamkan dalam semua usaha kami, sejak momen pendirian kami.
+                        {{ __('home_1') }}
                     </p>
                 </div>
                 <div class="col col-12 col-md-auto">
