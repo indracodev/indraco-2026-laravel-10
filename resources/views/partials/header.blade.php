@@ -244,7 +244,19 @@
                 </button>
                 <button type="button" class="theme-toggle">
                    <svg aria-hidden="true" class="theme-icon" width="1.25em" height="1.25em" viewBox="0 0 24 24" fill="none">
-                      <g class="icon-sun"><circle cx="12" cy="12" r="5" fill="currentColor"></circle></g>
+                      <g class="icon-sun">
+                        <circle cx="12" cy="12" r="5" fill="currentColor"></circle>
+                        <g stroke="currentColor" stroke-width="2">
+                           <line x1="12" y1="1" x2="12" y2="4"></line>
+                           <line x1="12" y1="20" x2="12" y2="23"></line>
+                           <line x1="1" y1="12" x2="4" y2="12"></line>
+                           <line x1="20" y1="12" x2="23" y2="12"></line>
+                           <line x1="4.2" y1="4.2" x2="6.3" y2="6.3"></line>
+                           <line x1="17.7" y1="17.7" x2="19.8" y2="19.8"></line>
+                           <line x1="4.2" y1="19.8" x2="6.3" y2="17.7"></line>
+                           <line x1="17.7" y1="6.3" x2="19.8" y2="4.2"></line>
+                        </g>
+                     </g>
                       <g class="icon-moon"><path d="M21 12.8A9 9 0 1111.2 3 a7 7 0 109.8 9.8z" fill="currentColor"></path></g>
                    </svg>
                 </button>

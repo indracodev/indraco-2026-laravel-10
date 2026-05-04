@@ -56,12 +56,12 @@ class News extends Model
 
     protected $fillable = [
         'slug',
-        'title',
-        'title_en',
-        'date_text',
-        'date_text_en',
+        'judul',
+        'judul_eng',
+        'tanggal',
+        'tanggal_eng',
         'content',
-        'content_en',
+        'content_eng',
         'image_path',
     ];
 

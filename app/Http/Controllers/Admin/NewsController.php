@@ -51,6 +51,7 @@ class NewsController extends Controller
         $data['judul_eng'] = $data['title_en'];
         $data['tanggal'] = $data['date_text'];
         $data['tanggal_eng'] = $data['date_text_en'];
+        $data['content_eng'] = $data['content_en'] ?? null;
 
         \App\Models\News::create($data);
         return redirect()->back()->with('success', 'Berita berhasil ditambahkan.');
@@ -87,6 +88,7 @@ class NewsController extends Controller
         $data['judul_eng'] = $data['title_en'];
         $data['tanggal'] = $data['date_text'];
         $data['tanggal_eng'] = $data['date_text_en'];
+        $data['content_eng'] = $data['content_en'] ?? null;
 
         $news->update($data);
         return redirect()->back()->with('success', 'Berita berhasil diperbarui.');
