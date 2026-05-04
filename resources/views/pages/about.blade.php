@@ -5,7 +5,7 @@
 @section('content')
 <main id="konten" class="py-5">
 
-    <h1 class="visually-hidden">{{ __('about_1') }}</h1>
+    <h1 class="visually-hidden" data-i18n="about_1">{{ __('about_1') }}</h1>
 
     <!-- Scroll indicator desktop -->
     <div id="scroll-indicator" class="position-fixed d-none d-lg-flex flex-column align-items-center justify-content-center text-center" style="bottom: 3rem; right: 3rem; z-index: 2000; opacity: 1; transition: opacity 0.3s ease;">
@@ -28,9 +28,9 @@
             <div class="container">
                 <div class="section-caption">
                     <header class="d-flex gap-3 align-items-center mb-3">
-                        <h2 id="about-title" class="caption-title mb-0 display-2 fw-bold text-capitalize">{{ __('about_1') }}</h2>
+                        <h2 id="about-title" class="caption-title mb-0 display-2 fw-bold text-capitalize" data-i18n="about_1">{{ __('about_1') }}</h2>
                     </header>
-                    <p>{!! __('about_2') !!}</p>
+                    <p data-i18n="about_2">{!! __('about_2') !!}</p>
                 </div>
             </div>
         </div>
@@ -39,11 +39,11 @@
     <!-- Timeline sections -->
     @php
         $timeline = [
-            ['year' => '1971', 'img' => 'about-1971-sketch.png', 'subtitle' => __('about_4'), 'text' => __('about_5'), 'visually_hidden' => __('about_3')],
-            ['year' => '1977', 'img' => 'about-1977-sketch.png', 'subtitle' => __('about_7'), 'text' => __('about_8'), 'visually_hidden' => __('about_6')],
-            ['year' => '1996', 'img' => 'about-1996-sketch.png', 'subtitle' => __('about_10'), 'text' => __('about_11'), 'visually_hidden' => __('about_9')],
-            ['year' => '2000', 'img' => 'about-2000-sketch.png', 'subtitle' => __('about_13'), 'text' => __('about_14'), 'visually_hidden' => __('about_12')],
-            ['year' => '2018', 'img' => 'about-2018-sketch.png', 'subtitle' => __('about_16'), 'text' => __('about_17'), 'visually_hidden' => __('about_15')],
+            ['year' => '1971', 'img' => 'about-1971-sketch.png', 'subtitle_key' => 'about_4', 'text_key' => 'about_5', 'visually_hidden_key' => 'about_3'],
+            ['year' => '1977', 'img' => 'about-1977-sketch.png', 'subtitle_key' => 'about_7', 'text_key' => 'about_8', 'visually_hidden_key' => 'about_6'],
+            ['year' => '1996', 'img' => 'about-1996-sketch.png', 'subtitle_key' => 'about_10', 'text_key' => 'about_11', 'visually_hidden_key' => 'about_9'],
+            ['year' => '2000', 'img' => 'about-2000-sketch.png', 'subtitle_key' => 'about_13', 'text_key' => 'about_14', 'visually_hidden_key' => 'about_12'],
+            ['year' => '2018', 'img' => 'about-2018-sketch.png', 'subtitle_key' => 'about_16', 'text_key' => 'about_17', 'visually_hidden_key' => 'about_15'],
         ];
     @endphp
 
@@ -58,10 +58,10 @@
             <div class="container">
                 <div class="section-caption">
                     <header class="d-flex gap-3 align-items-center mb-3">
-                        <h3 id="journey-{{ $item['year'] }}-title" class="caption-title mb-0 display-2 fw-bold text-capitalize">{{ $item['year'] }} <span class="visually-hidden">{{ $item['visually_hidden'] }}</span></h3>
-                        <p class="caption-text text-line-2 mb-0">{{ $item['subtitle'] }}</p>
+                        <h3 id="journey-{{ $item['year'] }}-title" class="caption-title mb-0 display-2 fw-bold text-capitalize">{{ $item['year'] }} <span class="visually-hidden" data-i18n="{{ $item['visually_hidden_key'] }}">{{ __($item['visually_hidden_key']) }}</span></h3>
+                        <p class="caption-text text-line-2 mb-0" data-i18n="{{ $item['subtitle_key'] }}">{{ __($item['subtitle_key']) }}</p>
                     </header>
-                    <p>{{ $item['text'] }}</p>
+                    <p data-i18n="{{ $item['text_key'] }}">{{ __($item['text_key']) }}</p>
                 </div>
             </div>
         </div>
@@ -70,7 +70,7 @@
 
     <!-- Vision & Mission -->
     <section class="section-content" aria-labelledby="vision-mission-title">
-        <h2 id="vision-mission-title" class="visually-hidden">{{ __('about_18') }}</h2>
+        <h2 id="vision-mission-title" class="visually-hidden" data-i18n="about_18">{{ __('about_18') }}</h2>
         <div class="section-header">
             <div class="container">
                 <img src="{{ asset('images/about-vision-mission-sketch.png') }}" alt="background visi misi INDRACO" loading="lazy" class="w-100 h-auto">
@@ -80,15 +80,15 @@
             <div class="container">
                 <div class="section-caption mb-5">
                     <header class="d-flex gap-3 align-items-center mb-3">
-                        <h3 class="caption-title mb-0 display-2 fw-bold text-capitalize">{{ __('about_19') }}</h3>
+                        <h3 class="caption-title mb-0 display-2 fw-bold text-capitalize" data-i18n="about_19">{{ __('about_19') }}</h3>
                     </header>
-                    <p>{{ __('about_20') }}</p>
+                    <p data-i18n="about_20">{{ __('about_20') }}</p>
                 </div>
                 <div class="section-caption">
                     <header class="d-flex gap-3 align-items-center mb-3">
-                        <h3 class="caption-title mb-0 display-2 fw-bold text-capitalize">{{ __('about_21') }}</h3>
+                        <h3 class="caption-title mb-0 display-2 fw-bold text-capitalize" data-i18n="about_21">{{ __('about_21') }}</h3>
                     </header>
-                    <p>{{ __('about_22') }}</p>
+                    <p data-i18n="about_22">{{ __('about_22') }}</p>
                 </div>
             </div>
         </div>
@@ -107,7 +107,7 @@
                     <div class="col">
                         <div class="section-caption">
                             <header class="d-flex gap-3 align-items-center mb-3">
-                                <h2 id="value-title" class="caption-title mb-0 display-2 fw-bold text-capitalize">{{ __('about_23') }}</h2>
+                                <h2 id="value-title" class="caption-title mb-0 display-2 fw-bold text-capitalize" data-i18n="about_23">{{ __('about_23') }}</h2>
                             </header>
                         </div>
                     </div>
@@ -119,8 +119,8 @@
                                         <img src="{{ asset('images/about-customer-focus.png') }}" data-light="images/about-customer-focus.png" data-dark="images/about-customer-focus-invert.png" alt="" class="object-fit-contain theme-image" aria-hidden="true">
                                     </div>
                                     <div class="w-75">
-                                        <h3 class="fs-5 fw-bold text-uppercase">{{ __('about_25') }}</h3>
-                                        <p class="small">{{ __('about_26') }}</p>
+                                        <h3 class="fs-5 fw-bold text-uppercase" data-i18n="about_25">{{ __('about_25') }}</h3>
+                                        <p class="small" data-i18n="about_26">{{ __('about_26') }}</p>
                                     </div>
                                 </article>
                             </li>
@@ -130,8 +130,8 @@
                                         <img src="{{ asset('images/about-teamwork.png') }}" data-light="images/about-teamwork.png" data-dark="images/about-teamwork-invert.png" alt="" class="object-fit-contain theme-image" aria-hidden="true">
                                     </div>
                                     <div class="w-75">
-                                        <h3 class="fs-5 fw-bold text-uppercase">{{ __('about_27') }}</h3>
-                                        <p class="small">{{ __('about_28') }}</p>
+                                        <h3 class="fs-5 fw-bold text-uppercase" data-i18n="about_27">{{ __('about_27') }}</h3>
+                                        <p class="small" data-i18n="about_28">{{ __('about_28') }}</p>
                                     </div>
                                 </article>
                             </li>
@@ -141,8 +141,8 @@
                                         <img src="{{ asset('images/about-innovation.png') }}" data-light="images/about-innovation.png" data-dark="images/about-innovation-invert.png" alt="" class="object-fit-contain theme-image" aria-hidden="true">
                                     </div>
                                     <div class="w-75">
-                                        <h3 class="fs-5 fw-bold text-uppercase">{{ __('about_29') }}</h3>
-                                        <p class="small">{{ __('about_30') }}</p>
+                                        <h3 class="fs-5 fw-bold text-uppercase" data-i18n="about_29">{{ __('about_29') }}</h3>
+                                        <p class="small" data-i18n="about_30">{{ __('about_30') }}</p>
                                     </div>
                                 </article>
                             </li>
@@ -152,8 +152,8 @@
                                         <img src="{{ asset('images/about-integrity.png') }}" data-light="images/about-integrity.png" data-dark="images/about-integrity-invert.png" alt="" class="object-fit-contain theme-image" aria-hidden="true">
                                     </div>
                                     <div class="w-75">
-                                        <h3 class="fs-5 fw-bold text-uppercase">{{ __('about_31') }}</h3>
-                                        <p class="small">{{ __('about_32') }}</p>
+                                        <h3 class="fs-5 fw-bold text-uppercase" data-i18n="about_31">{{ __('about_31') }}</h3>
+                                        <p class="small" data-i18n="about_32">{{ __('about_32') }}</p>
                                     </div>
                                 </article>
                             </li>
@@ -163,8 +163,8 @@
                                         <img src="{{ asset('images/about-resources.png') }}" data-light="images/about-resources.png" data-dark="images/about-resources-invert.png" alt="" class="object-fit-contain theme-image" aria-hidden="true">
                                     </div>
                                     <div class="w-75">
-                                        <h3 class="fs-5 fw-bold text-uppercase">{{ __('about_33') }}</h3>
-                                        <p class="small">{{ __('about_34') }}</p>
+                                        <h3 class="fs-5 fw-bold text-uppercase" data-i18n="about_33">{{ __('about_33') }}</h3>
+                                        <p class="small" data-i18n="about_34">{{ __('about_34') }}</p>
                                     </div>
                                 </article>
                             </li>
@@ -188,7 +188,7 @@
                     <div class="col">
                         <div class="section-caption">
                             <header class="d-flex gap-3 align-items-center mb-3">
-                                <h2 id="factory-title" class="caption-title mb-0 display-2 fw-bold text-capitalize">{{ __('about_35') }}</h2>
+                                <h2 id="factory-title" class="caption-title mb-0 display-2 fw-bold text-capitalize" data-i18n="about_35">{{ __('about_35') }}</h2>
                             </header>
                         </div>
                     </div>
@@ -204,7 +204,7 @@
                                         <p class="small mb-2">Driyorejo, Gresik Mfg. Facility</p>
                                         <p>Jl. Semeru No. 133-135 Bambe, Kec. Driyorejo. Gresik 61177 Jawa Timur - Indonesia.</p>
                                         <a href="https://maps.app.goo.gl/vLD5kH5WLryYcZwy6" target="_blank" rel="noopener" class="text-capitalize text-reset opacity-75-hover" aria-label="Lihat lokasi Pabrik Bambe di peta">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-alt-fill" viewBox="0 0 16 16"><path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6"/></svg> <span>{{ __('antar_saya_kesana') }}</span>
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-alt-fill" viewBox="0 0 16 16"><path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6"/></svg> <span data-i18n="antar_saya_kesana">{{ __('antar_saya_kesana') }}</span>
                                         </a>
                                     </div>
                                 </article>
@@ -219,7 +219,7 @@
                                         <p class="small mb-2">Dumai Mfg. Facility</p>
                                         <p>Jl. Pemuda Darat no.11 Kel. Pangkalan Sesai, Dumai Barat 28824 - Riau</p>
                                         <a href="https://maps.app.goo.gl/tmydyGwYoZvcbBVv5" target="_blank" rel="noopener" class="text-capitalize text-reset opacity-75-hover" aria-label="Lihat lokasi Pabrik Dumai di peta">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-alt-fill" viewBox="0 0 16 16"><path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6"/></svg> <span>{{ __('antar_saya_kesana') }}</span>
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-alt-fill" viewBox="0 0 16 16"><path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6"/></svg> <span data-i18n="antar_saya_kesana">{{ __('antar_saya_kesana') }}</span>
                                         </a>
                                     </div>
                                 </article>
