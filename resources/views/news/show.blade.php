@@ -28,7 +28,7 @@
 
             <div class="col col-12 col-lg-4">
                 <div id="menu-news">
-                    <h3 class="text-uppercase fs-5 fw-bold" data-i18n="news_btn_calendar">{{ __('kalender acara') }}</h3>
+                    <h3 class="text-uppercase fs-5 fw-bold" data-i18n="news_btn_calendar">{{ __('news_btn_calendar') }}</h3>
                     <hr class="opacity-100 border-2">
                     <ul class="list-unstyled mb-0">
                         @foreach(\App\Models\News::latest()->limit(10)->get() as $other)
@@ -45,7 +45,7 @@
                         <li><hr></li>
                         @endforeach
                     </ul>
-                    <a href="{{ route('news') }}" class="btn btn-outline-secondary w-100 mt-3">{{ __('Kembali ke Daftar Berita') }}</a>
+                    <a href="{{ route('news') }}" class="btn btn-outline-secondary w-100 mt-3" data-i18n="news_back">{{ __('news_back') }}</a>
                 </div>
             </div>
         </div>

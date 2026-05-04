@@ -4,7 +4,7 @@
 
 @section('content')
 <main id="konten">
-    <h1 class="visually-hidden">{{ __('news_h1') ?? 'halaman berita & acara' }}</h1>
+    <h1 class="visually-hidden" data-i18n="news_h1">{{ __('news_h1') }}</h1>
     <div class="container pb-5">
         <div class="row row-gap-5 py-lg-5 justify-content-lg-between">
             <div class="col col-12 col-lg-8 col-xl-7">
@@ -30,13 +30,13 @@
                     </div>
                 </div>
                 @else
-                <p>{{ __('Belum ada berita.') }}</p>
+                <p data-i18n="news_empty">{{ __('news_empty') }}</p>
                 @endif
             </div>
 
             <div class="col col-12 col-lg-4">
                 <div id="menu-news" class="order-lg-2">
-                    <h3 class="text-uppercase fs-5 fw-bold" data-i18n="news_btn_calendar">{{ __('kalender acara') }}</h3>
+                    <h3 class="text-uppercase fs-5 fw-bold" data-i18n="news_btn_calendar">{{ __('news_btn_calendar') }}</h3>
                     <hr class="opacity-100 border-2">
                     <ul class="list-unstyled mb-0">
                         @foreach($news as $item)

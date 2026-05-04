@@ -53,6 +53,26 @@ class News extends Model
     {
         $this->attributes['tanggal_eng'] = $value;
     }
+
+    public function getContentAttribute()
+    {
+        return $this->isi;
+    }
+
+    public function setContentAttribute($value)
+    {
+        $this->attributes['isi'] = $value;
+    }
+
+    public function getContentEnAttribute()
+    {
+        return $this->isi_eng;
+    }
+
+    public function setContentEnAttribute($value)
+    {
+        $this->attributes['isi_eng'] = $value;
+    }
     protected $fillable = [
         'slug',
         'title',
