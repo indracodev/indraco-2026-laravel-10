@@ -68,23 +68,23 @@ class News extends Model
     public function getTranslatedTitleAttribute()
     {
         if (app()->getLocale() === 'en') {
-            return $this->title_en;
+            return $this->judul_eng;
         }
-        return $this->title;
+        return $this->judul;
     }
 
     public function getTranslatedDateAttribute()
     {
         if (app()->getLocale() === 'en') {
-            return $this->date_text_en;
+            return $this->tanggal_eng;
         }
-        return $this->date_text;
+        return $this->tanggal;
     }
 
     public function getTranslatedContentAttribute()
     {
         if (app()->getLocale() === 'en') {
-            return $this->content_en;
+            return $this->content_eng;
         }
         return $this->content;
     }
