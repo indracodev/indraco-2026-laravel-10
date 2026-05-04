@@ -17,6 +17,10 @@ class SetLocale
             App::setLocale($request->get('preview_locale'));
         } elseif (Session::has('locale')) {
             App::setLocale(Session::get('locale'));
+        } elseif ($request->hasCookie('locale') && in_array($request->cookie('locale'), ['id', 'en'])) {
+            $locale = $request->cookie('locale');
+            App::setLocale($locale);
+            Session::put('locale', $locale);
         } else {
             App::setLocale('id');
             Session::put('locale', 'id');

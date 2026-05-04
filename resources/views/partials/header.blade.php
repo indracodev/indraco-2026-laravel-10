@@ -38,9 +38,9 @@
              <ul class="list-unstyled mb-0 d-none d-lg-flex flex-wrap gap-3 ms-auto small align-items-center">
                 <li><a href="https://indracostore.com/" target="_blank" class="text-reset text-decoration-none opacity-75-hover">INDRACO Store</a></li>
                 <li class="vr"></li>
-                <li><a href="{{ route('lang.switch', 'en') }}" class="text-reset text-decoration-none lang-toggler {{ app()->getLocale() == 'en' ? '' : 'opacity-50' }}"><img src="{{ asset('images/flags/us.svg') }}" alt="EN" style="width: 20px; height: auto;" class="me-1"> <span class="opacity-75-hover {{ app()->getLocale() == 'en' ? 'fw-bold' : '' }}">English</span></a></li>
+                <li><a href="{{ route('lang.switch', 'en') }}" data-lang="en" class="text-reset text-decoration-none lang-toggler {{ app()->getLocale() == 'en' ? '' : 'opacity-50' }}"><img src="{{ asset('images/flags/us.svg') }}" alt="EN" style="width: 20px; height: auto;" class="me-1"> <span class="opacity-75-hover {{ app()->getLocale() == 'en' ? 'fw-bold' : '' }}">English</span></a></li>
                 <li class="vr"></li>
-                <li><a href="{{ route('lang.switch', 'id') }}" class="text-reset text-decoration-none lang-toggler {{ app()->getLocale() == 'id' ? '' : 'opacity-50' }}"><img src="{{ asset('images/flags/id.svg') }}" alt="ID" style="width: 20px; height: auto;" class="me-1"> <span class="opacity-75-hover {{ app()->getLocale() == 'id' ? 'fw-bold' : '' }}">Indonesia</span></a></li>
+                <li><a href="{{ route('lang.switch', 'id') }}" data-lang="id" class="text-reset text-decoration-none lang-toggler {{ app()->getLocale() == 'id' ? '' : 'opacity-50' }}"><img src="{{ asset('images/flags/id.svg') }}" alt="ID" style="width: 20px; height: auto;" class="me-1"> <span class="opacity-75-hover {{ app()->getLocale() == 'id' ? 'fw-bold' : '' }}">Indonesia</span></a></li>
              </ul>
           </div>
           <div class="navbar-bawah w-100 d-none d-lg-flex align-items-lg-center column-gap-lg-5">
