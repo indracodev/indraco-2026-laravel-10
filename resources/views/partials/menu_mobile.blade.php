@@ -73,10 +73,10 @@
             <a href="https://indracostore.com/" target="_blank" class="nav-link text-reset opacity-75-hover px-0">INDRACO Store</a>
          </li>
          <li class="nav-item">
-            <a href="{{ route('lang.switch', 'en') }}" class="nav-link text-reset opacity-75-hover px-0 {{ app()->getLocale() == 'en' ? 'fw-bold' : '' }}">&#x1f1fa;&#x1f1f8; English</a>
+            <a href="{{ route('lang.switch', 'en') }}" class="nav-link text-reset opacity-75-hover px-0 {{ app()->getLocale() == 'en' ? 'fw-bold' : '' }}"><img src="{{ asset('images/flags/us.svg') }}" alt="EN" style="width: 20px; height: auto;" class="me-1"> English</a>
          </li>
          <li class="nav-item">
-            <a href="{{ route('lang.switch', 'id') }}" class="nav-link text-reset opacity-75-hover px-0 {{ app()->getLocale() == 'id' ? 'fw-bold' : '' }}">&#x1F1EE;&#x1F1E9; Indonesia</a>
+            <a href="{{ route('lang.switch', 'id') }}" class="nav-link text-reset opacity-75-hover px-0 {{ app()->getLocale() == 'id' ? 'fw-bold' : '' }}"><img src="{{ asset('images/flags/id.svg') }}" alt="ID" style="width: 20px; height: auto;" class="me-1"> Indonesia</a>
          </li>
       </ul>
    </div>

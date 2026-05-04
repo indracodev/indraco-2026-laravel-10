@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 7410 3900">
+<rect width="7410" height="3900" fill="#b22234"/>
+<path d="M0,450H7410M0,1050H7410M0,1650H7410M0,2250H7410M0,2850H7410M0,3450H7410" stroke="#fff" stroke-width="300"/>
+<rect width="2964" height="2100" fill="#3c3b6e"/>
+<g fill="#fff">
+<g id="s18">
+<g id="s9">
+<g id="s5">
+<g id="s">
+<path id="star" d="M0,-115L34,107L-89,-54L89,-54L-34,107z"/>
+</g>
+<use href="#s" x="494"/>
+<use href="#s" x="988"/>
+<use href="#s" x="1482"/>
+<use href="#s" x="1976"/>
+</g>
+<use href="#s5" x="247" y="175"/>
+</g>
+<use href="#s9" y="350"/>
+</g>
+<use href="#s18" y="700"/>
+<use href="#s18" y="1400"/>
+<use href="#s9" y="1750"/>
+</g>
+</svg>
