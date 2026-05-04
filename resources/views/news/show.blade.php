@@ -31,9 +31,9 @@
                     <h3 class="text-uppercase fs-5 fw-bold" data-i18n="news_btn_calendar">{{ __('news_btn_calendar') }}</h3>
                     <hr class="opacity-100 border-2">
                     <ul class="list-unstyled mb-0">
-                        @foreach(\App\Models\News::latest()->limit(10)->get() as $other)
+                        @foreach($news as $other)
                         <li>
-                            <a href="{{ route('news.show', $other->slug) }}" class="text-reset text-decoration-none opacity-75-hover text-start {{ $item->id == $other->id ? 'fw-bold' : '' }}">
+                            <a href="{{ route('news.show', $other->slug) }}" class="text-reset text-decoration-none opacity-75-hover text-start {{ $item->id == $other->id ? 'fw-bold text-primary' : '' }}">
                                 <h3 class="fs-5 text-capitalize text-2-line">
                                     {{ $other->translated_title }}
                                 </h3>
@@ -45,6 +45,9 @@
                         <li><hr></li>
                         @endforeach
                     </ul>
+                    <div class="mt-4">
+                        {{ $news->links() }}
+                    </div>
                     <a href="{{ route('news') }}" class="btn btn-outline-secondary w-100 mt-3" data-i18n="news_back">{{ __('news_back') }}</a>
                 </div>
             </div>
