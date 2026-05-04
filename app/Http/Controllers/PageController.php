@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Http;
 
 class PageController extends Controller
 {
@@ -13,41 +12,30 @@ class PageController extends Controller
     public function download() { return view('pages.download'); }
     public function career() { return view('pages.career'); }
     public function contact() {
-        return view('pages.contact');
+        $num1 = rand(1, 9);
+        $num2 = rand(1, 9);
+        session(['captcha_ans' => $num1 + $num2]);
+        return view('pages.contact', compact('num1', 'num2'));
     }
 
     public function submitContact(Request $request)
     {
         $request->validate([
-            'name'                  => 'required|string|max:255',
-            'email'                 => 'required|email|max:255',
-            'phone'                 => 'nullable|string|max:50',
-            'subject'               => 'nullable|string|max:255',
-            'message'               => 'required|string',
-            'g-recaptcha-response'  => 'required|string',
+            'name'    => 'required|string|max:255',
+            'email'   => 'required|email|max:255',
+            'phone'   => 'nullable|string|max:50',
+            'subject' => 'nullable|string|max:255',
+            'message' => 'required|string',
+            'captcha' => 'required|numeric',
         ], [
-            'required'                          => __('contact_error_validation'),
-            'g-recaptcha-response.required'     => __('contact_error_captcha'),
+            'required' => __('contact_error_validation'),
         ]);
 
-        // Verify reCAPTCHA with Google
-        $recaptchaSecret = config('recaptcha.secret_key');
-        $recaptchaResponse = $request->input('g-recaptcha-response');
-
-        $verifyResponse = Http::asForm()->post(
-            'https://www.google.com/recaptcha/api/siteverify',
-            [
-                'secret'   => $recaptchaSecret,
-                'response' => $recaptchaResponse,
-                'remoteip' => $request->ip(),
-            ]
-        );
-
-        $verifyData = $verifyResponse->json();
-
-        if (empty($verifyData['success']) || $verifyData['success'] !== true) {
+        if ((int) $request->captcha !== (int) session('captcha_ans')) {
             return back()->withInput()->with('error', __('contact_error_captcha'));
         }
+
+        session()->forget('captcha_ans');
 
         try {
             \Illuminate\Support\Facades\DB::table('master_kontak')->insert([

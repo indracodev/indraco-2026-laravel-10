@@ -2,10 +2,6 @@
 
 @section('title', __('contact_title_page'))
 
-@section('styles')
-<script src="https://www.google.com/recaptcha/api.js" async defer></script>
-@endsection
-
 @section('content')
 <main id="konten">
     <div class="py-5">
@@ -73,9 +69,25 @@
                             class="form-control form-control-lg rounded-0 text-reset bg-transparent border-0 px-0 shadow-none"
                             placeholder="{{ __('contact_placeholder_message') }}" required>{{ old('message') }}</textarea>
                     </div>
-                    <div class="form-group">
-                        <div class="g-recaptcha" data-sitekey="{{ config('recaptcha.site_key') }}"></div>
-                        @error('g-recaptcha-response')
+                    <div class="form-group border-bottom pb-3">
+                        <label class="form-label fw-bold mb-2">{{ __('contact_verification') }}</label>
+                        <div class="d-flex align-items-center gap-3 flex-wrap">
+                            <canvas id="captcha-canvas" width="160" height="52"
+                                style="border:1px solid currentColor; border-radius:4px; cursor:pointer;"
+                                data-n1="{{ $num1 }}" data-n2="{{ $num2 }}"
+                                title="Click to refresh"></canvas>
+                            <button type="button" id="captcha-refresh" class="btn p-0 border-0 bg-transparent opacity-75-hover" title="Refresh CAPTCHA" aria-label="Refresh CAPTCHA">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" fill="currentColor" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd" d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2v1z"/>
+                                    <path d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466z"/>
+                                </svg>
+                            </button>
+                            <input id="captcha" name="captcha" type="number"
+                                class="form-control form-control-lg rounded-0 text-reset bg-transparent border-0 border-bottom px-0 shadow-none text-center"
+                                style="max-width:80px;"
+                                placeholder="?" required autocomplete="off">
+                        </div>
+                        @error('captcha')
                             <div class="text-danger small mt-1">{{ $message }}</div>
                         @enderror
                     </div>
@@ -175,4 +187,63 @@
         </div>
     </div>
 </main>
+@endsection
+
+@section('scripts')
+<script>
+(function () {
+    function drawCaptcha(canvas) {
+        var n1 = parseInt(canvas.dataset.n1);
+        var n2 = parseInt(canvas.dataset.n2);
+        var ctx = canvas.getContext('2d');
+        var w = canvas.width, h = canvas.height;
+
+        ctx.clearRect(0, 0, w, h);
+
+        var isDark = document.documentElement.getAttribute('data-bs-theme') === 'dark';
+        ctx.fillStyle = isDark ? '#2a2a2a' : '#f8f8f8';
+        ctx.fillRect(0, 0, w, h);
+
+        ctx.strokeStyle = isDark ? 'rgba(255,255,255,0.08)' : 'rgba(0,0,0,0.06)';
+        for (var i = 0; i < 6; i++) {
+            ctx.beginPath();
+            ctx.moveTo(Math.random() * w, Math.random() * h);
+            ctx.lineTo(Math.random() * w, Math.random() * h);
+            ctx.stroke();
+        }
+
+        for (var j = 0; j < 30; j++) {
+            ctx.fillStyle = isDark ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.08)';
+            ctx.fillRect(Math.random() * w, Math.random() * h, 2, 2);
+        }
+
+        var text = n1 + ' + ' + n2 + ' = ?';
+        ctx.font = 'bold 22px monospace';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.shadowColor = isDark ? 'rgba(0,0,0,0.5)' : 'rgba(0,0,0,0.15)';
+        ctx.shadowBlur = 2;
+
+        ctx.save();
+        ctx.translate(w / 2, h / 2);
+        ctx.rotate((Math.random() - 0.5) * 0.08);
+        ctx.fillStyle = isDark ? '#e0e0e0' : '#222222';
+        ctx.fillText(text, 0, 0);
+        ctx.restore();
+    }
+
+    var canvas = document.getElementById('captcha-canvas');
+    if (!canvas) return;
+
+    drawCaptcha(canvas);
+
+    var refreshBtn = document.getElementById('captcha-refresh');
+    [canvas, refreshBtn].forEach(function (el) {
+        if (el) el.addEventListener('click', function () { drawCaptcha(canvas); });
+    });
+
+    var observer = new MutationObserver(function () { drawCaptcha(canvas); });
+    observer.observe(document.documentElement, { attributes: true, attributeFilter: ['data-bs-theme'] });
+})();
+</script>
 @endsection
