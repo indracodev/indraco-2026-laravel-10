@@ -5,6 +5,25 @@
 @section('content')
 <section aria-labelledby="hero-banner-title">
     <div class="hero-banner position-relative overflow-hidden bg-secondary">
+
+        @if(($banner_type ?? 'youtube') === 'youtube' && !empty($banner_value))
+        {{-- YouTube Video Banner --}}
+        @php $yt_id = $banner_value; @endphp
+        <div class="videotron position-absolute top-50 start-50 translate-middle" style="aspect-ratio: 16/9;">
+            <div class="ratio ratio-16x9 overflow-hidden pointer-event-none">
+                <iframe class="position-absolute top-50 start-50 translate-middle w-100 h-100"
+                    src="https://www.youtube.com/embed/{{ $yt_id }}?autoplay=1&amp;mute=1&amp;loop=1&amp;playlist={{ $yt_id }}&amp;controls=0&amp;modestbranding=1&amp;rel=0&amp;playsinline=1"
+                    loading="eager" aria-hidden="true" tabindex="-1" title="Video profil INDRACO" frameborder="0"
+                    allow="autoplay; fullscreen; compute-pressure"></iframe>
+            </div>
+        </div>
+        @elseif(($banner_type ?? '') === 'image' && !empty($banner_value))
+        {{-- Image Banner --}}
+        <img src="{{ $banner_value }}" alt="Hero Banner INDRACO"
+            class="position-absolute top-50 start-50 translate-middle w-100 h-100"
+            style="object-fit: cover; pointer-events: none;" aria-hidden="true" loading="eager">
+        @else
+        {{-- Fallback: default YouTube --}}
         <div class="videotron position-absolute top-50 start-50 translate-middle" style="aspect-ratio: 16/9;">
             <div class="ratio ratio-16x9 overflow-hidden pointer-event-none">
                 <iframe class="position-absolute top-50 start-50 translate-middle w-100 h-100"
@@ -13,6 +32,8 @@
                     allow="autoplay; fullscreen; compute-pressure"></iframe>
             </div>
         </div>
+        @endif
+
         <div class="z-1 video-overlay position-absolute bg-black opacity-50"
             style="inset: 0; pointer-events: none;"></div>
         <div class="banner-caption z-2 position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center p-4">
