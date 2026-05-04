@@ -41,7 +41,7 @@
                     <ul class="list-unstyled mb-0">
                         @foreach($news as $item)
                         <li>
-                            <a href="{{ route('news.show', $item->slug) }}" class="text-reset text-decoration-none opacity-75-hover text-start">
+                            <a href="{{ route('news.show', ['slug' => $item->slug, 'page' => request()->get('page')]) }}" class="text-reset text-decoration-none opacity-75-hover text-start">
                                 <h3 class="fs-5 text-capitalize text-2-line {{ isset($current) && $current->id == $item->id ? 'fw-bold text-primary' : '' }}">
                                     {{ $item->translated_title }}
                                 </h3>
@@ -53,7 +53,7 @@
                         <li><hr></li>
                         @endforeach
                     </ul>
-                    <div class="mt-4">
+                    <div class="mt-4 custom-pagination">
                         {{ $news->links() }}
                     </div>
                 </div>
