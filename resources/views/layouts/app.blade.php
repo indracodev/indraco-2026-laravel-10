@@ -4,12 +4,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="@yield('meta_description', 'INDRACO adalah perusahaan FMCG terkemuka di Indonesia sejak 1971, menghadirkan berbagai produk berkualitas seperti kopi, teh, jahe, dan cokelat.')">
     
-    <meta property="og:title" content="@yield('og_title', 'INDRACO – Indonesia Leading FMCG Company Since 1971')">
-    <meta property="og:description" content="@yield('og_description', 'Perusahaan kopi dan produk konsumen Indonesia sejak 1971.')">
-    <meta property="og:image" content="@yield('og_image', asset('images/og-image.jpg'))">
+    {{-- SEO Settings --}}
+    <meta name="description" content="@yield('meta_description', $settings['seo_description'] ?? 'INDRACO adalah perusahaan FMCG terkemuka di Indonesia sejak 1971, menghadirkan berbagai produk berkualitas seperti kopi, teh, jahe, dan cokelat.')">
+    <meta name="keywords" content="@yield('meta_keywords', $settings['seo_keywords'] ?? 'indraco, fmcg indonesia, kopi indonesia')">
+    @if(!empty($settings['google_site_verification']))
+    <meta name="google-site-verification" content="{{ $settings['google_site_verification'] }}" />
+    @endif
+
+    {{-- Open Graph --}}
+    <meta property="og:title" content="@yield('og_title', $settings['seo_title'] ?? 'INDRACO – Indonesia Leading FMCG Company Since 1971')">
+    <meta property="og:description" content="@yield('og_description', $settings['seo_description'] ?? 'Perusahaan kopi dan produk konsumen Indonesia sejak 1971.')">
+    <meta property="og:image" content="@yield('og_image', asset($settings['seo_og_image'] ?? 'images/og-image.jpg'))">
     <meta property="og:type" content="website">
+    
+    {{-- Google Analytics --}}
+    @if(!empty($settings['google_analytics_id']))
+    <script async src="https://www.googletagmanager.com/gtag/js?id={{ $settings['google_analytics_id'] }}"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', '{{ $settings['google_analytics_id'] }}');
+    </script>
+    @endif
     
     <link rel="shortcut icon" href="{{ asset('images/icon-indraco.ico') }}" type="image/x-icon">
     
@@ -27,7 +45,7 @@
     
     @yield('styles')
     
-    <title>@yield('title', 'Perusahaan FMCG Terkemuka di Indonesia Sejak 1971 – INDRACO')</title>
+    <title>@yield('title', $settings['seo_title'] ?? 'Perusahaan FMCG Terkemuka di Indonesia Sejak 1971 – INDRACO')</title>
 </head>
 
 <body>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 
 class SettingController extends Controller
 {
@@ -26,6 +27,7 @@ class SettingController extends Controller
         ]);
         
         \App\Models\Setting::create($data);
+        Cache::forget('site_settings');
         return redirect()->back()->with('success', 'Pengaturan berhasil ditambahkan.');
     }
 
@@ -38,6 +40,7 @@ class SettingController extends Controller
         ]);
         
         $setting->update($data);
+        Cache::forget('site_settings');
         return redirect()->back()->with('success', 'Pengaturan berhasil diperbarui.');
     }
 
@@ -45,6 +48,7 @@ class SettingController extends Controller
     {
         $setting = \App\Models\Setting::where('setting_key', $id)->firstOrFail();
         $setting->delete();
+        Cache::forget('site_settings');
         return redirect()->back()->with('success', 'Pengaturan berhasil dihapus.');
     }
 }
