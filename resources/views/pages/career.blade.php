@@ -4,14 +4,14 @@
 
 @section('content')
 <main id="konten">
-    <h1 class="visually-hidden">{{ __('career_title_header') }}</h1>
+    <h1 class="visually-hidden" data-i18n="career_title_header">{{ __('career_title_header') }}</h1>
     <div class="py-5">
         <div class="container pb-lg-5">
             <div class="banner text-dark" style="background-color: #e9e9e9;">
                 <div class="row g-0 align-items-lg-center">
                     <div class="col col-12 col-lg-6 p-4 p-sm-5">
-                        <h2 class="fw-bold">{{ __('career_1') }}</h2>
-                        <p class="mb-0">{{ __('career_2') }}</p>
+                        <h2 class="fw-bold" data-i18n="career_1">{{ __('career_1') }}</h2>
+                        <p class="mb-0" data-i18n="career_2">{{ __('career_2') }}</p>
                     </div>
                     <div class="col col-12 col-lg-6">
                         <img src="{{ asset('images/banner-karir.png') }}" alt="" loading="lazy" class="img-fluid w-100">
@@ -19,7 +19,7 @@
                 </div>
             </div>
 
-            <p class="my-5">{{ __('career_3') }}</p>
+            <p class="my-5" data-i18n="career_3">{{ __('career_3') }}</p>
 
             <ol class="list-unstyled row row-gap-5 row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 text-center mb-5">
                 <li>
@@ -29,7 +29,7 @@
                                 <img src="{{ asset('images/career-stage-1.png') }}" data-light="{{ asset('images/career-stage-1.png') }}" data-dark="{{ asset('images/career-stage-1-invert.png') }}" alt="" loading="lazy" aria-hidden="true" class="theme-image object-fit-contain">
                             </div>
                         </div>
-                        <p class="text-capitalize">1. <br> <span>{{ __('career_4') }}</span></p>
+                        <p class="text-capitalize">1. <br> <span data-i18n="career_4">{{ __('career_4') }}</span></p>
                     </article>
                 </li>
                 <li>
@@ -39,7 +39,7 @@
                                 <img src="{{ asset('images/career-stage-2.png') }}" data-light="{{ asset('images/career-stage-2.png') }}" data-dark="{{ asset('images/career-stage-2-invert.png') }}" alt="" loading="lazy" aria-hidden="true" class="theme-image object-fit-contain">
                             </div>
                         </div>
-                        <p class="text-capitalize">2. <br> <span>{{ __('career_5') }}</span></p>
+                        <p class="text-capitalize">2. <br> <span data-i18n="career_5">{{ __('career_5') }}</span></p>
                     </article>
                 </li>
                 <li>
@@ -49,7 +49,7 @@
                                 <img src="{{ asset('images/career-stage-3.png') }}" data-light="{{ asset('images/career-stage-3.png') }}" data-dark="{{ asset('images/career-stage-3-invert.png') }}" alt="" loading="lazy" aria-hidden="true" class="theme-image object-fit-contain">
                             </div>
                         </div>
-                        <p class="text-capitalize">3. <br> <span>{{ __('career_6') }}</span></p>
+                        <p class="text-capitalize">3. <br> <span data-i18n="career_6">{{ __('career_6') }}</span></p>
                     </article>
                 </li>
                 <li>
@@ -59,7 +59,7 @@
                                 <img src="{{ asset('images/career-stage-4.png') }}" data-light="{{ asset('images/career-stage-4.png') }}" data-dark="{{ asset('images/career-stage-4-invert.png') }}" alt="" loading="lazy" aria-hidden="true" class="theme-image object-fit-contain">
                             </div>
                         </div>
-                        <p class="text-capitalize">4. <br> <span>{{ __('career_7') }}</span></p>
+                        <p class="text-capitalize">4. <br> <span data-i18n="career_7">{{ __('career_7') }}</span></p>
                     </article>
                 </li>
                 <li>
@@ -69,15 +69,15 @@
                                 <img src="{{ asset('images/career-stage-5.png') }}" data-light="{{ asset('images/career-stage-5.png') }}" data-dark="{{ asset('images/career-stage-5-invert.png') }}" alt="" loading="lazy" aria-hidden="true" class="theme-image object-fit-contain">
                             </div>
                         </div>
-                        <p class="text-capitalize">5. <br> <span>{{ __('career_8') }}</span></p>
+                        <p class="text-capitalize">5. <br> <span data-i18n="career_8">{{ __('career_8') }}</span></p>
                     </article>
                 </li>
             </ol>
 
-            <!-- <p class="fs-3 text-center text-danger">{{ __('career_9') }}</p> -->
+            <!-- <p class="fs-3 text-center text-danger" data-i18n="career_9">{{ __('career_9') }}</p> -->
             
             <!-- daftar situs job online -->
-            <p class="text-center text-capitalize">{{ __('career_10') }}</p>
+            <p class="text-center text-capitalize" data-i18n="career_10">{{ __('career_10') }}</p>
             <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-3 g-xl-4 justify-content-lg-center">
                 <div class="col">
                     <a href="https://id.jobstreet.com/id/companies/indraco-168551422470741" target="_blank" class="text-reset text-decoration-none">
