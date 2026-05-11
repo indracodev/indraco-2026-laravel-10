@@ -38,6 +38,7 @@ class ProductController extends Controller
                 ->where('status', 'active')
                 ->where('is_deleted', 0)
                 ->get();
+            dd($products);
             return view('products.brand_standard', [
                 'brand'        => $brand,
                 'products'     => $products,
